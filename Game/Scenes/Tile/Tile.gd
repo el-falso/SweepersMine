@@ -49,6 +49,8 @@ func _on_gui_input(event: InputEvent) -> void:
 		if event.is_action_pressed("mouse_right"):
 			if not is_revealed:
 				is_flagged = !is_flagged
+				Global.assumed_mines = Global.assumed_mines - 1 if is_flagged else Global.assumed_mines + 1
+				EventBus.on_mines_changes.emit()
 		if event.is_action_pressed("reveal"):
 			if not is_revealed:
 				is_revealed = true

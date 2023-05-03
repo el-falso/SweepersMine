@@ -11,10 +11,11 @@ var numUnopenedTiles : int
 @export var weight : int = 8
 @export var mines : int = 9
 
-@onready var playfield: GridContainer = $CenterContainer/Playfield
+@onready var playfield: GridContainer = %Playfield
 
 func _ready() -> void:
 	numUnopenedTiles = height * weight
+	Global.assumed_mines = mines
 	
 	# Setup playfield
 	playfield.columns = weight
@@ -31,7 +32,7 @@ func _ready() -> void:
 	#for tile in tiles:
 		#tile._set_color()
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if numUnopenedTiles == mines:
 		print("You won")
 
