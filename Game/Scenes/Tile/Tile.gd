@@ -3,6 +3,8 @@ extends TextureRect
 
 signal has_been_revealed(tile: Tile)
 
+var is_interactable: bool = true
+
 var has_bomb : bool = false:
 	set(value):
 		has_bomb = value
@@ -38,13 +40,23 @@ var is_revealed : bool = false:
 	get:
 		return is_revealed
 
+@onready var label: Label = $Label
 @onready var bomb: TextureRect = $Bomb
+@onready var cover: TextureRect = $Cover
+@onready var flag: TextureRect = $Flag
+
 
 func _ready() -> void:
+	EventBus.game_over.connect(_stop_input)
+	
+	label.visible = false
 	bomb.visible = false
+	cover.visible = true
+	flag.visible = false
 
 
 func _on_gui_input(event: InputEvent) -> void:
+	if not is_interactable: return
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("mouse_right"):
 			if not is_revealed:
@@ -55,6 +67,8 @@ func _on_gui_input(event: InputEvent) -> void:
 			if not is_revealed:
 				is_revealed = true
 				has_been_revealed.emit(self)
+				if has_bomb:
+					EventBus.game_over.emit()
 
 func _increment_number() -> void:
 	$Label.visible = true
@@ -88,3 +102,7 @@ func number_to_color(number: int) -> Color:
 			return Color.DIM_GRAY
 		_:
 			return Color.WHITE
+
+
+func _stop_input() -> void:
+	is_interactable = false

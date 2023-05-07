@@ -1,2 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
+Shared/Fonts/ChevyRay - Oeuf.ttf
+Shared/Fonts/ChevyRay - Oeuf.ttf.import

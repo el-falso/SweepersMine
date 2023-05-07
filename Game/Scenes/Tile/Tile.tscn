@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbrjf8rnbwuym"]
+[gd_scene load_steps=8 format=3 uid="uid://cbrjf8rnbwuym"]
 
 [ext_resource type="Texture2D" uid="uid://bd48shiqq6mfl" path="res://Game/Scenes/Tile/Tile.png" id="1_bq1wl"]
 [ext_resource type="Script" path="res://Game/Scenes/Tile/Tile.gd" id="1_umah1"]
@@ -6,6 +6,9 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1u7r"]
 atlas = ExtResource("1_bq1wl")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r7whp"]
+font_size = 26
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tlysv"]
 atlas = ExtResource("1_bq1wl")
@@ -24,7 +27,6 @@ texture = SubResource("AtlasTexture_v1u7r")
 script = ExtResource("1_umah1")
 
 [node name="Label" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,14 +34,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "0"
+label_settings = SubResource("LabelSettings_r7whp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Bomb" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 texture = SubResource("AtlasTexture_tlysv")
 
 [node name="Cover" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

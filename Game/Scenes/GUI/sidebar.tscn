@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy3fm0icga1ck"]
+
+[ext_resource type="Script" path="res://Game/Scenes/GUI/sidebar.gd" id="1_ys6a0"]
+
+[node name="Sidebar" type="MarginContainer"]
+custom_minimum_size = Vector2(150, 0)
+offset_right = 79.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_ys6a0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Mines" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MinesLabel" type="Label" parent="VBoxContainer/Mines"]
+layout_mode = 2
+text = "Mines:"
+
+[node name="MinesAmountLabel" type="Label" parent="VBoxContainer/Mines"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "9"
+
+[node name="Time" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer/Time"]
+layout_mode = 2
+text = "Time:"
+
+[node name="Label" type="Label" parent="VBoxContainer/Time"]
+layout_mode = 2
+text = "0:00"
