@@ -14,6 +14,9 @@ var numUnopenedTiles : int
 @onready var playfield: GridContainer = %Playfield
 
 func _ready() -> void:
+	weight = Global.weight
+	height = Global.height
+	mines = Global.mines
 	numUnopenedTiles = height * weight
 	Global.assumed_mines = mines
 	
@@ -68,6 +71,7 @@ func _setup_bombs() -> void:
 			index -= 1
 
 func _setup_numbers() -> void:
+	#FIX: numbers are wrong in a custom game 
 	for tile in tiles:
 		for bomb in bomb_tiles:
 			if (tile.position - bomb.position).length() == 32 or (tile.position - bomb.position).length() <= 32 * sqrt(2):

@@ -8,6 +8,7 @@ var is_timer_started : bool = true
 
 
 func _ready() -> void:
+	mines_amount_label.text = "%s" % Global.mines
 	EventBus.on_mines_changes.connect(_on_mines_change)
 	EventBus.game_over.connect(_on_timer_stop)
 

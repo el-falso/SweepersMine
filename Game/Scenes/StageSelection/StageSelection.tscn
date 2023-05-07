@@ -1,0 +1,185 @@
+[gd_scene load_steps=3 format=3 uid="uid://du7dt0nhusx7j"]
+
+[ext_resource type="Script" path="res://Game/Scenes/StageSelection/StageSelection.gd" id="1_pg8sb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_40ks7"]
+font_size = 39
+
+[node name="StageSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pg8sb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.105882, 0.113725, 0.117647, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sweepers Mine"
+label_settings = SubResource("LabelSettings_40ks7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+
+[node name="BtnClassic" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Classic
+
+8x8"
+
+[node name="BtnEasy" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Easy
+
+9x9"
+
+[node name="BtnMedium" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Medium
+
+16x16"
+
+[node name="BtnExpert" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+disabled = true
+text = "Expert
+
+30x16"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Custom"
+horizontal_alignment = 1
+
+[node name="HBoxWidth" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxWidth"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Width"
+
+[node name="SliderWidth" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxWidth"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 8.0
+max_value = 20.0
+value = 8.0
+
+[node name="LblCurrentWidth" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxWidth"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxHeight" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxHeight"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Height"
+
+[node name="SliderHeight" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxHeight"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 8.0
+max_value = 16.0
+value = 8.0
+
+[node name="LblCurrentHeight" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxHeight"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxMines" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxMines"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Mines"
+
+[node name="SliderMines" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxMines"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 8.0
+value = 8.0
+
+[node name="LblCurrentMines" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxMines"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "999"
+horizontal_alignment = 2
+
+[node name="BtnPlay" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "© 2023 TackRad Games"
+horizontal_alignment = 1
