@@ -33,7 +33,7 @@ func _ready() -> void:
 	
 
 func _on_btn_classic_pressed() -> void:
-	Global.weight = 8
+	Global.width = 8
 	Global.height = 8
 	Global.mines = 9
 	
@@ -41,7 +41,7 @@ func _on_btn_classic_pressed() -> void:
 
 
 func _on_btn_easy_pressed() -> void:
-	Global.weight = 9
+	Global.width = 9
 	Global.height = 9
 	Global.mines = 10
 	
@@ -49,7 +49,7 @@ func _on_btn_easy_pressed() -> void:
 
 
 func _on_btn_medium_pressed() -> void:
-	Global.weight = 16
+	Global.width = 16
 	Global.height = 16
 	Global.mines = 40
 	
@@ -57,7 +57,7 @@ func _on_btn_medium_pressed() -> void:
 
 
 func _on_btn_expert_pressed() -> void:
-	Global.weight = 30
+	Global.width = 20
 	Global.height = 16
 	Global.mines = 99
 	
@@ -78,7 +78,7 @@ func _on_slider_mines_value_changed(value: float) -> void:
 	lbl_current_mines.text = "%s" % value
 
 func _on_btn_play_pressed() -> void:
-	Global.weight = roundi(slider_width.value)
+	Global.width = roundi(slider_width.value)
 	Global.height = roundi(slider_height.value)
 	Global.mines = roundi(slider_mines.value)
 	

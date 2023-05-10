@@ -18,6 +18,7 @@ var is_empty : bool = true
 var number : int = 0:
 	set(value):
 		number = value
+		$Label.visible = true
 		$Label.text = str(number)
 		$Label.modulate = number_to_color(value)
 	get:
@@ -48,11 +49,16 @@ var is_revealed : bool = false:
 
 func _ready() -> void:
 	EventBus.game_over.connect(_stop_input)
+	EventBus.game_won.connect(_stop_input)
 	
 	label.visible = false
 	bomb.visible = false
 	cover.visible = true
 	flag.visible = false
+	if number > 0:
+		label.visible = true
+	if has_bomb:
+		bomb.visible = true
 
 
 func _on_gui_input(event: InputEvent) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cytc31psyasi6"]
+[gd_scene load_steps=5 format=3 uid="uid://cytc31psyasi6"]
 
 [ext_resource type="Script" path="res://Game/Scenes/GUI/gui.gd" id="1_7e3ch"]
 
@@ -6,6 +6,9 @@
 bg_color = Color(0.109804, 0.109804, 0.109804, 0.501961)
 
 [sub_resource type="LabelSettings" id="LabelSettings_uj0em"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_8nmp5"]
 font_size = 64
 
 [node name="GUI" type="Control"]
@@ -29,5 +32,19 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7vdum")
 layout_mode = 2
 text = "You died!"
 label_settings = SubResource("LabelSettings_uj0em")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameWonContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="GameWonContainer"]
+layout_mode = 2
+text = "You Won!"
+label_settings = SubResource("LabelSettings_8nmp5")
 horizontal_alignment = 1
 vertical_alignment = 1
