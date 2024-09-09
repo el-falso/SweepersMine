@@ -47,7 +47,7 @@ vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 10
 alignment = 1
 
 [node name="BtnClassic" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -177,8 +177,16 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Play"
 
+[node name="CBEasyMode" type="CheckBox" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 2
+text = "Easy-Mode"
+
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "© 2023 TackRad Games"
 horizontal_alignment = 1
+
+[connection signal="toggled" from="MarginContainer/VBoxContainer/CBEasyMode" to="." method="_on_cb_easy_mode_toggled"]

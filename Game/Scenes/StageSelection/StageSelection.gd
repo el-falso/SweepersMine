@@ -14,6 +14,8 @@ extends Control
 @onready var lbl_current_mines: Label = %LblCurrentMines
 @onready var btn_play: Button = %BtnPlay
 
+@onready var cb_easy_mode: CheckBox = %CBEasyMode
+
 
 
 func _ready() -> void:
@@ -30,6 +32,8 @@ func _ready() -> void:
 	lbl_current_width.text = "%s" % slider_width.value
 	lbl_current_height.text = "%s" % slider_height.value
 	lbl_current_mines.text = "%s" % slider_mines.value
+	
+	cb_easy_mode.button_pressed = Global.easy_mode
 	
 
 func _on_btn_classic_pressed() -> void:
@@ -83,3 +87,7 @@ func _on_btn_play_pressed() -> void:
 	Global.mines = roundi(slider_mines.value)
 	
 	get_tree().change_scene_to_file("res://Game/Scenes/World/world.tscn")
+
+
+func _on_cb_easy_mode_toggled(toggled_on: bool) -> void:
+	Global.easy_mode = toggled_on

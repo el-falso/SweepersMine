@@ -33,7 +33,3 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="GUI" parent="GUILayer" instance=ExtResource("2_m0m7o")]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_bottom = 0.5
-grow_vertical = 2

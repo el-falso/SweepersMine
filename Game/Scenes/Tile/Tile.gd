@@ -36,10 +36,11 @@ var is_revealed : bool = false:
 		is_revealed = value
 		$Cover.visible = not value
 		if value:
-			#TODO: needs overhaul, really ugly coded
-			get_parent().get_parent().get_parent().numUnopenedTiles -= 1
+			Global.playfield.numUnopenedTiles -= 1
 	get:
 		return is_revealed
+		
+var position_in_grid: Vector2
 
 @onready var label: Label = $Label
 @onready var bomb: TextureRect = $Bomb
@@ -60,6 +61,13 @@ func _ready() -> void:
 	if has_bomb:
 		bomb.visible = true
 
+func reveal() -> void:
+	is_revealed = true
+	if not has_bomb:
+		has_been_revealed.emit(self)
+	else:
+		EventBus.game_over.emit()
+
 
 func _on_gui_input(event: InputEvent) -> void:
 	if not is_interactable: return
@@ -71,10 +79,35 @@ func _on_gui_input(event: InputEvent) -> void:
 				EventBus.on_mines_changes.emit()
 		if event.is_action_pressed("reveal"):
 			if not is_revealed:
-				is_revealed = true
-				has_been_revealed.emit(self)
-				if has_bomb:
-					EventBus.game_over.emit()
+				if not is_flagged:
+					reveal()
+			else:
+				if not Global.easy_mode:
+					return
+				if not is_flagged:
+					var index: int = 0
+					for y in [-1, 0, 1]:
+						for x in [-1, 0, 1]:
+							var positional_sum: = position_in_grid + Vector2(x, y)
+							if positional_sum.x >= 0 and positional_sum.y >= 0 and positional_sum.x < Global.playfield.width and positional_sum.y < Global.playfield.height:
+								var current_tile: Tile = Global.playfield.world[positional_sum].instance
+								if current_tile.is_flagged:
+									index += 1
+					
+					if index < number:
+						return
+					
+					for y in [-1, 0, 1]:
+						for x in [-1, 0, 1]:
+							var current_vec2 := Vector2(x, y)
+							if current_vec2 == Vector2.ZERO:
+								continue
+							var positional_sum: = position_in_grid + current_vec2
+							if positional_sum.x >= 0 and positional_sum.y >= 0 and positional_sum.x < Global.playfield.width and positional_sum.y < Global.playfield.height:
+								var current_tile: Tile = Global.playfield.world[positional_sum].instance
+								if not current_tile.is_flagged and not current_tile.is_revealed:
+									print("reveal")
+									current_tile.reveal()
 
 func _increment_number() -> void:
 	$Label.visible = true
